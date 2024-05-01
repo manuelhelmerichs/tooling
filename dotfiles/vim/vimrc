@@ -1,0 +1,7 @@
+
+set number
+syntax on
+set expandtab shiftwidth=2 softtabstop=2
+set clipboard=unnamed
+set autoindent
+set cindent

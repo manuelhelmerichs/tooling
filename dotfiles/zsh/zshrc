@@ -1,7 +1,6 @@
 # > customization >
 PROMPT='λ '
 bindkey -v
-alias r="radian"
 # < customization <
 
 # >> aliases >>
