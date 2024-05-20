@@ -21,6 +21,7 @@
     bat # cat replacement
     fd # find replacement
     bottom # system ressources
+    vim # overwrites preinstalled vim
     neovim # FOR VS CODE (INSTALLED VIA BREW)
 
     # # You can also create simple shell scripts directly inside your
