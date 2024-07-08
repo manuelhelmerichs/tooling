@@ -4,6 +4,8 @@ bindkey -v
 # < customization <
 
 # >> aliases >>
+alias tooling="cd /Users/admin/projects/tooling; nix flake update ; home-manager switch --flake ~/projects/tooling ; cd ~-"
+
 alias i2ml="cd /Users/admin/projects/lecture_i2ml ; code ."
 alias sl="cd /Users/admin/projects/lecture_sl ; code ."
 alias slds="cd /Users/admin/projects/i2ml ; code ."
