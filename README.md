@@ -1,7 +1,6 @@
 
 ## TODO
 - switch from nvim to vim plugin -> no two nvim configs, etc.
-- wait for zotero 7 cask => sync brew to brewfile, put it in casks folder
 
 ## commands
 ```
