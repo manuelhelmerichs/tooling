@@ -4,7 +4,7 @@ bindkey -v
 # < customization <
 
 # >> aliases >>
-alias tooling="cd /Users/admin/projects/tooling; nix flake update ; home-manager switch --flake ~/projects/tooling ; cd ~-"
+alias tooling="cd /Users/admin/projects/tooling; nix flake update; git add .; git commit -m \$(date +'%y-%m-%d'); home-manager switch --flake ~/projects/tooling; brew update; brew upgrade; brew bundle dump --file=~/projects/tooling/Brewfile --force; cd ~-"
 
 alias i2ml="cd /Users/admin/projects/lecture_i2ml ; code ."
 alias sl="cd /Users/admin/projects/lecture_sl ; code ."

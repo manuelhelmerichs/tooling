@@ -4,10 +4,13 @@
 - wait for zotero 7 cask => sync brew to brewfile, put it in casks folder
 
 ## commands
-To update TUI applications:
 ```
+# To update TUI applications:
 nix flake update
 home-manager switch --flake ~/projects/tooling
+
+# To update GUI applications:
+brew update && brew upgrade
 ```
 These commands are bundled into the `tooling` alias in `dotfiles/zsh/zshrc`.
 
