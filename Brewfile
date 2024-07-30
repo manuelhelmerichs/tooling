@@ -1,6 +1,5 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
-tap "yt-dlp/taps"
 cask "alfred"
 cask "anki"
 cask "calibre"
