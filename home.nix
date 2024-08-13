@@ -23,7 +23,6 @@
     bottom # system ressources
     vim # overwrites preinstalled vim
     neovim # FOR VS CODE (INSTALLED VIA BREW)
-    aspell # for spellchecking
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
