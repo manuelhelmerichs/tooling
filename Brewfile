@@ -1,5 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
+brew "libgit2"
 cask "anki"
 cask "calibre"
 cask "chatgpt"
