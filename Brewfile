@@ -1,5 +1,8 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
+brew "glib"
+brew "harfbuzz"
+brew "tesseract"
 brew "libgit2"
 cask "anki"
 cask "calibre"
