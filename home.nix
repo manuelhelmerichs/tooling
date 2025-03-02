@@ -22,6 +22,7 @@
     fd # find replacement
     bottom # system ressources
     vim # overwrites preinstalled vim
+    direnv # e.g. run nix develop automatically in a directory
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
