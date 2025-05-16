@@ -1,6 +1,8 @@
 
 ## TODO
 - use cloud service for syncing calibre library
+- what about R
+- what about Python
 
 ## commands
 ```zsh
