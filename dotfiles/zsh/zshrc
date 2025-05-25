@@ -7,9 +7,12 @@ bindkey -v
 alias upgrade="cd /Users/admin/projects/tooling; nix flake update; home-manager switch --flake ~/projects/tooling; brew update; brew upgrade; brew bundle dump --file=~/projects/tooling/Brewfile --force; git add .; git commit -m \$(date +'%y-%m-%d'); cd ~-"
 alias cleanup="nix-collect-garbage -d; brew cleanup -s"
 
+# uni
+alias dl="cd /Users/admin/Documents/5-DL/labs ; code ."
+
+# work
 alias i2ml="cd /Users/admin/projects/lecture_service/lecture_i2ml ; code ."
 alias sl="cd /Users/admin/projects/lecture_service/lecture_sl ; code ."
-
 alias slds="conda activate slds"
 # << aliases <<
 
