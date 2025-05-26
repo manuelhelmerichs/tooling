@@ -25,14 +25,7 @@
     direnv # e.g. run nix develop automatically in a directory
 
     # various libraries that are required by other packages (e.g., R)
-    libpng            # PNG reference implementation
-    freetype          # FreeType font rendering library
-    glib              # Core GNOME utility library
-    fribidi           # Unicode BiDi algorithm implementation
     gcc               # GNU Compiler Collection
-    harfbuzz          # OpenType text shaping engine
-    tesseract         # OCR engine (Tesseract)
-    libgit2           # Git core methods as a library
     optipng           # PNG optimizer
     pandoc            # Universal document converter
   ];
