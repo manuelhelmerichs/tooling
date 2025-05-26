@@ -24,7 +24,7 @@
     vim # overwrites preinstalled vim
     direnv # e.g. run nix develop automatically in a directory
 
-    # various libraries that are required by other packages (e.g., R)
+    # various libraries that are required by other packages (e.g., R, Python)
     gcc               # GNU Compiler Collection
     optipng           # PNG optimizer
     pandoc            # Universal document converter
