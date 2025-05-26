@@ -24,18 +24,22 @@
     vim # overwrites preinstalled vim
     direnv # e.g. run nix develop automatically in a directory
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    # various libraries that are required by other packages (e.g., R)
+    libpng            # PNG reference implementation
+    freetype          # FreeType font rendering library
+    glib              # Core GNOME utility library
+    fribidi           # Unicode BiDi algorithm implementation
+    gcc               # GNU Compiler Collection
+    harfbuzz          # OpenType text shaping engine
+    tesseract         # OCR engine (Tesseract)
+    libgit2           # Git core methods as a library
+    optipng           # PNG optimizer
+    pandoc            # Universal document converter
   ];
 
   home.file = {
     ".vimrc".source = dotfiles/vim/vimrc; # for vim (not neovim!)
     ".zshrc".source = dotfiles/zsh/zshrc; # THIS ASSUMES CONDA WAS INSTALLED VIA BREW
-
     ".config/gh/config.yml".source = dotfiles/gh/config.yml;
     ".config/gh/hosts.yml".source = dotfiles/gh/hosts.yml;
   };
