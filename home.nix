@@ -23,6 +23,7 @@
     bottom # system ressources
     vim # overwrites preinstalled vim
     direnv # e.g. run nix develop automatically in a directory
+    typst
 
     # various libraries that are required by other packages (e.g., R, Python)
     gcc               # GNU Compiler Collection
