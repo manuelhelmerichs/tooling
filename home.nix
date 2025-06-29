@@ -22,8 +22,8 @@
     fd # find replacement
     bottom # system ressources
     vim # overwrites preinstalled vim
-    direnv # e.g. run nix develop automatically in a directory
-    typst
+    direnv # e.g., run nix develop automatically in a directory
+    coreutils # e.g., for the `timeout` command
 
     # various libraries that are required by other packages (e.g., R, Python)
     gcc               # GNU Compiler Collection

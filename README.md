@@ -3,6 +3,7 @@
 - use cloud service for syncing calibre library
 - what about R
 - what about Python
+- move from mactex (brew) to texlive (nix)
 
 ## commands
 ```zsh
