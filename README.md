@@ -1,17 +1,19 @@
 
 ## Commands
 ```zsh
-upgrade # upgrades nix generation, brew casks and commits receipts
-cleanup # cleans previous nix generation and brew
+upgrade # upgrades nix generation and commits changes
+cleanup # cleans previous nix generations
 ```
 See `dotfiles/zsh/zshrc`.
 
 ## Rationale
-Because of Apple's ecosystem and excellent hardware, switching to NixOS on bare metal does not make sense - system divergence is not a problem in a single user & single system setting! However, using Home Manager (this flake!) to declaratively manage my dotfiles and TUI applications does. For GUI applications, Homebrew is used. _Note that homebrew is only used for casks._ Only if no cask is available, the App Store is used.
-
-Nix Flakes allow for reproducible projects, clear dependencies and comprehensible build processes.
+Using Home Manager (this flake!) to declaratively manage dotfiles and CLI tools on WSL2.
+GUI applications are managed on the Windows host via winget.
 
 ## Receipts
-- Folder structure: ~/projects for all Git repositories (including `tooling`!).
+- Folder structure: `~/projects` for all Git repositories, clone `tooling` thereto.
 - Installed Nix using Determinate System's installer, the config is under `/etc/nix/nix.conf`.
-- Installed Homebrew. When reinstalling, take care of `minicoda`!
+- `nix run home-manager/master -- switch --flake ~/projects/tooling`.
+- `gh auth login` to setup GitHub.
+- R is installed separately (system package).
+- GUI apps (VS Code, browsers, etc.) are on Windows host.

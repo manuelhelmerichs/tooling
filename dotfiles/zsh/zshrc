@@ -4,33 +4,9 @@ bindkey -v
 # < customization <
 
 # >> aliases >>
-alias upgrade="cd /Users/admin/projects/tooling; nix flake update; home-manager switch --flake ~/projects/tooling; brew update; brew upgrade; brew bundle dump --file=~/projects/tooling/Brewfile --force; git add .; git commit -m \$(date +'%y-%m-%d'); cd ~-"
-alias cleanup="nix-collect-garbage -d; brew cleanup -s"
-
-# uni
-alias dl="cd /Users/admin/Documents/5-DL/labs ; code ."
-
-# work
-alias i2ml="cd /Users/admin/projects/lecture_service/lecture_i2ml ; code ."
-alias sl="cd /Users/admin/projects/lecture_service/lecture_sl ; code ."
-alias slds="conda activate slds"
+alias upgrade="cd ~/projects/tooling && nix flake update && home-manager switch --flake ~/projects/tooling && git add . && git commit -m \$(date +'%y-%m-%d'); cd ~-"
+alias cleanup="nix-collect-garbage -d"
 # << aliases <<
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # >>>> direnv >>>>
 eval "$(direnv hook zsh)"

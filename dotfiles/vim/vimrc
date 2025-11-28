@@ -1,7 +1,10 @@
-
 set number
 syntax on
 set expandtab shiftwidth=2 softtabstop=2
-set clipboard=unnamed
 set autoindent
 set cindent
+
+" WSL2 clipboard integration using clip.exe/powershell
+autocmd TextYankPost * if v:event.operator ==# 'y' | call system('clip.exe', @0) | endif
+nnoremap <silent> p :let @0=substitute(system('powershell.exe -c Get-Clipboard'), '\r\n\?', '\n', 'g')<CR>"0p
+nnoremap <silent> P :let @0=substitute(system('powershell.exe -c Get-Clipboard'), '\r\n\?', '\n', 'g')<CR>"0P
