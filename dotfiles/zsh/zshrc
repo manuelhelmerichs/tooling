@@ -4,8 +4,8 @@ bindkey -v
 # < customization <
 
 # >> aliases >>
-alias upgrade="cd ~/projects/tooling && nix flake update && git add . && home-manager switch --flake ~/projects/tooling#admin && git commit -m \$(date +'%y-%m-%d'); cd ~-"
-alias cleanup="nix-collect-garbage -d"
+alias upgrade="cd ~/projects/tooling && nix flake update && home-manager switch --flake ~/projects/tooling#admin && brew update && brew upgrade && brew bundle dump --file=~/projects/tooling/Brewfile --force && git add . && git commit -m \$(date +'%y-%m-%d'); cd ~-"
+alias cleanup="nix-collect-garbage -d && brew cleanup -s"
 # << aliases <<
 
 # >>>> direnv >>>>

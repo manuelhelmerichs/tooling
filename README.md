@@ -1,21 +1,22 @@
 ## Commands
 ```zsh
-upgrade # upgrades nix generation and commits changes
-cleanup # cleans previous nix generations
+upgrade # upgrades Nix generation, Homebrew packages, and commits receipts
+cleanup # cleans previous Nix generations and Homebrew cache
 ```
 See `dotfiles/zsh/zshrc`.
 
 ## Rationale
 Using Home Manager (this flake!) to declaratively manage dotfiles and CLI tools on macOS.
-GUI applications are installed separately.
+Homebrew manages GUI applications and any packages that are unavailable or impractical through Nix.
 
 ## Receipts
 - Folder structure: `~/projects` for all Git repositories, clone `tooling` thereto.
 - Installed Nix using Determinate System's installer, the config is under `/etc/nix/nix.conf`.
 - `nix run home-manager/master -- switch --flake ~/projects/tooling#admin`.
+- Installed Homebrew; `upgrade` refreshes `Brewfile` with `brew bundle dump`.
 - `gh auth login` to setup GitHub.
 - R is installed separately (system package).
-- GUI apps (Zed, browsers, etc.) are installed outside Home Manager.
+- GUI apps (Zed, browsers, etc.) are installed through Homebrew casks where possible.
 
 ## Zed setup
 - `settings.json` and `keymap.json` are tracked under `dotfiles/zed`.
