@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "manue";
-  home.homeDirectory = "/home/manue";
+  home.username = "admin";
+  home.homeDirectory = "/Users/admin";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -34,6 +34,14 @@
     ".vimrc".source = dotfiles/vim/vimrc; # for vim (not neovim!)
     ".zshrc".source = dotfiles/zsh/zshrc;
     ".config/gh/config.yml".source = dotfiles/gh/config.yml;
+    ".config/zed/settings.json" = {
+      source = dotfiles/zed/settings.json;
+      force = true;
+    };
+    ".config/zed/keymap.json" = {
+      source = dotfiles/zed/keymap.json;
+      force = true;
+    };
   };
 
   home.sessionVariables = {

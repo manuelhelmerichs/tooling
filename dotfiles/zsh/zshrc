@@ -4,7 +4,7 @@ bindkey -v
 # < customization <
 
 # >> aliases >>
-alias upgrade="cd ~/projects/tooling && nix flake update && home-manager switch --flake ~/projects/tooling && git add . && git commit -m \$(date +'%y-%m-%d'); cd ~-"
+alias upgrade="cd ~/projects/tooling && nix flake update && git add . && home-manager switch --flake ~/projects/tooling#admin && git commit -m \$(date +'%y-%m-%d'); cd ~-"
 alias cleanup="nix-collect-garbage -d"
 # << aliases <<
 
