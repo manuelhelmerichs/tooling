@@ -1,0 +1,4 @@
+interface:
+  display_name: "NixOS WSL Workstation"
+  short_description: "Use this NixOS-WSL machine correctly"
+  default_prompt: "Use $nixos-wsl-workstation when working on this WSL2 NixOS machine."

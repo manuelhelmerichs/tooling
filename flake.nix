@@ -1,29 +1,42 @@
 {
-  description = "Home Manager configuration";
+  description = "NixOS-WSL workstation configuration";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs =
+    inputs@{ self
+    , nixpkgs
+    , nixos-wsl
+    , home-manager
+    , ...
+    }:
     let
-      system = "aarch64-darwin";
+      system = "aarch64-linux";
+      hostname = "nixos";
+      username = "nixos";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      homeConfigurations."admin" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+    in
+    {
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs self hostname username;
+        };
+        modules = [
+          nixos-wsl.nixosModules.default
+          home-manager.nixosModules.home-manager
+          ./hosts/wsl
+        ];
       };
+
+      formatter.${system} = pkgs.nixpkgs-fmt;
     };
 }
