@@ -2,7 +2,7 @@
 
 {
   home.file = {
-    ".codex/skills/nixos-wsl-workstation".source = ../../skills/nixos-wsl-workstation;
+    ".codex/skills/tooling".source = ../../skills/tooling;
 
     ".codex/config.toml".text = ''
       model = "gpt-5.5"

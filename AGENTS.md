@@ -1,9 +1,8 @@
-# Repository Instructions
+# Repository instructions
 
 This repository owns the WSL2 NixOS workstation configuration for user `nixos` on `aarch64-linux`.
 
-- Treat `/home/nixos/tooling#nixos` as the source of truth for system and Home Manager configuration.
-- Prefer Nix-provided tools. For temporary tooling, use `nix shell nixpkgs#<package> --command <cmd>` or the `ntemp` shell helper after the system has been switched.
-- Keep permanent packages in `modules/nixos` or `modules/home`.
-- Use `nixpkgs-fmt` for Nix formatting.
-- Validate flake changes with `nix flake check` when feasible, or at least evaluate/build `nixosConfigurations.nixos.config.system.build.toplevel`.
+- Keep permanent packages in `modules/nixos` or `modules/home`: User tools in `modules/home`; system services, Nix settings, and host behavior in `modules/nixos` or `hosts/wsl`.
+- Use `nixpkgs-fmt` for Nix formatting after making changes.
+- Validate flake changes with `nix flake check` when feasible, or at least evaluate `nixosConfigurations.nixos.config.system.build.toplevel`.
+- Keep secrets and mutable state out of this repository, including auth tokens, shell history, caches, and databases!
