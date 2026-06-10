@@ -7,6 +7,7 @@
     isNormalUser = true;
     home = "/home/${username}";
     extraGroups = [ "wheel" ];
+    linger = true;
     shell = pkgs.zsh;
   };
 }
