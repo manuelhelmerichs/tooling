@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./claude.nix
     ./cli.nix
     ./codex.nix
     ./git.nix
