@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, ... }:
+{ inputs, lib, pkgs, username, ... }:
 
 {
   nix = {
@@ -24,7 +24,13 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = false;
+  nixpkgs.config = {
+    allowUnfree = false;
+    allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "claude-code"
+      ];
+  };
 
   time.timeZone = "Etc/UTC";
   i18n.defaultLocale = "en_US.UTF-8";

@@ -2,6 +2,8 @@
 
 {
   home.file = {
+    ".claude/skills/tooling".source = ../../skills/tooling;
+
     ".codex/skills/tooling".source = ../../skills/tooling;
 
     ".codex/config.toml".text = ''
