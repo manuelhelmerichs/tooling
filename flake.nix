@@ -1,39 +1,40 @@
 {
-  description = "NixOS-WSL workstation configuration";
+  description = "macOS Home Manager configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
-    inputs@{ self
-    , nixpkgs
-    , nixos-wsl
+    inputs@{ nixpkgs
     , home-manager
     , ...
     }:
     let
-      system = "aarch64-linux";
-      hostname = "nixos";
-      username = "nixos";
-      pkgs = nixpkgs.legacyPackages.${system};
+      system = "aarch64-darwin";
+      username = "manuel";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = false;
+          allowUnfreePredicate = pkg:
+            builtins.elem (nixpkgs.lib.getName pkg) [
+              "claude-code"
+            ];
+        };
+      };
     in
     {
-      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs self hostname username;
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs username;
         };
         modules = [
-          nixos-wsl.nixosModules.default
-          home-manager.nixosModules.home-manager
-          ./hosts/wsl
+          ./modules/home
         ];
       };
 

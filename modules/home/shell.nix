@@ -1,15 +1,4 @@
-{ pkgs, ... }:
-
 {
-  programs.bash = {
-    enable = true;
-    initExtra = ''
-      if [[ $- == *i* && -z "''${NIXOS_KEEP_BASH-}" ]]; then
-        exec ${pkgs.zsh}/bin/zsh
-      fi
-    '';
-  };
-
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -27,25 +16,28 @@
       PROMPT='λ '
       bindkey -v
 
+      tooling_flake() {
+        printf '%s\n' "$HOME/Projects/tooling#manuel"
+      }
+
       rebuild() {
-        sudo nixos-rebuild switch --flake "$HOME/tooling#nixos" "$@"
+        home-manager switch --flake "$(tooling_flake)" "$@"
       }
 
       test-system() {
-        sudo nixos-rebuild test --flake "$HOME/tooling#nixos" "$@"
+        home-manager build --flake "$(tooling_flake)" "$@"
       }
 
       upgrade() {
         (
-          cd "$HOME/tooling" &&
+          cd "$HOME/Projects/tooling" &&
           nix flake update &&
-          sudo nixos-rebuild switch --flake "$HOME/tooling#nixos" &&
+          home-manager switch --flake "$(tooling_flake)" &&
           git status --short
         )
       }
 
       cleanup() {
-        sudo nix-collect-garbage -d
         nix-collect-garbage -d
       }
 

@@ -1,17 +1,17 @@
 ---
 name: tooling
-description: "Use when setting up projects, installing project dependencies, installing temporary tools, or managing this machine."
+description: "Use when setting up projects, installing project dependencies, temporary tools, or managing this machine."
 ---
 
 # Tooling
 
-This machine is a WSL2 NixOS VM, with
+This machine is an Apple Silicon macOS workstation, with
 
-- user: `nixos`,
-- home: `/home/nixos`,
-- architecture: `aarch64-linux`,
-- tooling repo: `/home/nixos/tooling`,
-- system flake: `/home/nixos/tooling#nixos`,
+- user: `manuel`,
+- home: `/Users/manuel`,
+- architecture: `aarch64-darwin`,
+- tooling repo: `~/Projects/tooling`,
+- Home Manager flake: `~/Projects/tooling#manuel`,
 - shell: `zsh`;
 - `direnv` with `nix-direnv` is enabled.
 
@@ -30,18 +30,19 @@ This machine is a WSL2 NixOS VM, with
 
 ## Machine management
 
-- `/home/nixos/tooling#nixos` is the single source of truth for system and Home Manager configuration.
-- Put permanent user tools in `modules/home`; put system services, Nix settings, and host behavior in `modules/nixos` or `hosts/wsl`.
+- `~/Projects/tooling#manuel` is the single source of truth for Home Manager configuration.
+- Put permanent CLI and user tools in `modules/home`.
+- Do not declare GUI apps or macOS system defaults here; those are managed outside this repository.
 - Keep secrets and mutable state out of the repo, including auth tokens, shell history, caches, and databases!
 - Always format Nix with `nixpkgs-fmt`.
-- Validate flake changes with `nix flake check` when feasible, or build `.#nixosConfigurations.nixos.config.system.build.toplevel`.
+- Validate flake changes with `nix flake check` when feasible, or evaluate `.#homeConfigurations.manuel.activationPackage`.
 
 ## Helpers
 
 ```zsh
-rebuild       # switch to /home/nixos/tooling#nixos
-test-system   # test the same flake without making it the boot default
-upgrade       # update flake inputs and switch the system
-cleanup       # collect old system and user generations
+rebuild       # switch to ~/Projects/tooling#manuel
+test-system   # build the same flake without switching
+upgrade       # update flake inputs, switch, then show git status
+cleanup       # collect old Nix generations
 ntemp ripgrep # open a temporary shell with nixpkgs#ripgrep
 ```

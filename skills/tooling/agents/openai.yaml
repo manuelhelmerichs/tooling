@@ -1,4 +1,4 @@
 interface:
   display_name: "Tooling"
-  short_description: "NixOS project and machine tooling"
-  default_prompt: "Use $tooling when setting up projects, installing dependencies, temporary tools, or changing this NixOS machine."
+  short_description: "macOS project and machine tooling"
+  default_prompt: "Use $tooling when setting up projects, installing dependencies, temporary tools, or changing this macOS machine."
