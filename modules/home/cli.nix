@@ -22,10 +22,11 @@
     shellcheck
     shfmt
     statix
-    strace
     tree
     unzip
     uv
+    vim
+    wget
     zip
   ];
 

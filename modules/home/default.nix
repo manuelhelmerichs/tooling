@@ -12,7 +12,7 @@
 
   home = {
     inherit username;
-    homeDirectory = "/home/${username}";
+    homeDirectory = "/Users/${username}";
     stateVersion = "26.05";
 
     sessionVariables = {

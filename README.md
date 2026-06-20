@@ -1,34 +1,44 @@
 # Tooling
 
-NixOS-WSL workstation configuration.
+Home Manager configuration for an Apple Silicon MacBook Air.
 
 ## Layout
 
-- `flake.nix` defines the `nixos` NixOS configuration.
-- `hosts/wsl` contains the WSL2 host entry point.
-- `modules/nixos` contains system modules.
-- `modules/home` contains Home Manager modules integrated into NixOS.
-- `skills/tooling` is linked into `~/.codex/skills` so Codex agents know this is a NixOS-WSL machine and prefer Nix tooling.
+- `flake.nix` defines the `manuel` Home Manager configuration.
+- `modules/home` contains user-level packages and dotfiles.
+- `skills/tooling` is linked into agent skill directories so agents follow this machine's tooling rules.
 - `AGENTS.md` gives repository-local instructions.
 
-## First switch
+## Fresh Mac Setup
 
-From this repository:
+Create the macOS account with short name `manuel`, install Determinate Nix, then run the bootstrap command.
 
 ```zsh
-sudo nixos-rebuild switch --flake /home/nixos/tooling#nixos
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-This enables flakes, switches the WSL configuration, creates the `nixos` user settings, and applies Home Manager.
+Open a new terminal, then:
 
-## Custom helpers
+```zsh
+mkdir -p "$HOME/Projects" &&
+  nix shell github:NixOS/nixpkgs/nixpkgs-unstable#git --command \
+    git clone https://github.com/manuelhelmerichs/tooling.git "$HOME/Projects/tooling" &&
+  nix run github:nix-community/home-manager -- \
+    switch --flake "$HOME/Projects/tooling#manuel"
+```
+
+## Custom Helpers
 
 After the first switch, zsh provides:
 
 ```zsh
-rebuild       # sudo nixos-rebuild switch --flake "$HOME/tooling#nixos"
-test-system   # sudo nixos-rebuild test --flake "$HOME/tooling#nixos"
-upgrade       # nix flake update, switch, then show git status
-cleanup       # collect old system and user generations
+rebuild       # home-manager switch --flake "$HOME/Projects/tooling#manuel"
+test-system   # home-manager build --flake "$HOME/Projects/tooling#manuel"
+upgrade       # update flake inputs, switch, then show git status
+cleanup       # collect old Nix generations
 ntemp jq      # temporary nix shell with nixpkgs#jq
 ```
+
+Declare CLI and development tools in `modules/home`. GUI apps are managed manually outside this repository.
+
+This repository intentionally manages only `~/.zshrc` for interactive shell helpers. Login-shell files such as `~/.zprofile` and `~/.zshenv` stay unmanaged so machine-local PATH setup can live there without fighting Home Manager.

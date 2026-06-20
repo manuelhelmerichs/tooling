@@ -1,67 +1,84 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  programs.bash = {
-    enable = true;
-    initExtra = ''
-      if [[ $- == *i* && -z "''${NIXOS_KEEP_BASH-}" ]]; then
-        exec ${pkgs.zsh}/bin/zsh
+  home.file.".zshrc".text = ''
+    typeset -U path cdpath fpath manpath
+
+    # Keep login-shell setup outside Home Manager. This file is for
+    # interactive shell behavior only.
+    if [[ -r "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh" ]]; then
+      . "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh"
+    fi
+
+    for profile in ''${(z)NIX_PROFILES}; do
+      fpath+=(
+        "$profile/share/zsh/site-functions"
+        "$profile/share/zsh/$ZSH_VERSION/functions"
+        "$profile/share/zsh/vendor-completions"
+      )
+    done
+    fpath+=("${pkgs.nix-zsh-completions}/share/zsh/site-functions")
+
+    autoload -Uz compinit
+    compinit
+
+    source "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    ZSH_AUTOSUGGEST_STRATEGY=(history)
+
+    HISTSIZE="10000"
+    SAVEHIST="10000"
+    HISTFILE="$HOME/.cache/zsh/history"
+    mkdir -p "$(dirname "$HISTFILE")"
+
+    setopt HIST_FCNTL_LOCK HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY autocd
+    unsetopt APPEND_HISTORY EXTENDED_HISTORY HIST_EXPIRE_DUPS_FIRST
+    unsetopt HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS HIST_SAVE_NO_DUPS
+
+    PROMPT='λ '
+    bindkey -v
+
+    tooling_flake() {
+      printf '%s\n' "$HOME/Projects/tooling#manuel"
+    }
+
+    rebuild() {
+      home-manager switch --flake "$(tooling_flake)" "$@"
+    }
+
+    test-system() {
+      home-manager build --flake "$(tooling_flake)" "$@"
+    }
+
+    upgrade() {
+      (
+        cd "$HOME/Projects/tooling" &&
+        nix flake update &&
+        home-manager switch --flake "$(tooling_flake)" &&
+        git status --short
+      )
+    }
+
+    cleanup() {
+      nix-collect-garbage -d
+    }
+
+    ntemp() {
+      if [ "$#" -eq 0 ]; then
+        echo "usage: ntemp <package> [package ...]" >&2
+        return 2
       fi
-    '';
-  };
 
-  programs.zsh = {
-    enable = true;
-    autocd = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+      local args=()
+      local package
+      for package in "$@"; do
+        args+=("nixpkgs#$package")
+      done
+      nix shell "''${args[@]}"
+    }
 
-    history = {
-      path = "$HOME/.cache/zsh/history";
-      save = 10000;
-      size = 10000;
-    };
+    eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
 
-    initContent = ''
-      PROMPT='λ '
-      bindkey -v
-
-      rebuild() {
-        sudo nixos-rebuild switch --flake "$HOME/tooling#nixos" "$@"
-      }
-
-      test-system() {
-        sudo nixos-rebuild test --flake "$HOME/tooling#nixos" "$@"
-      }
-
-      upgrade() {
-        (
-          cd "$HOME/tooling" &&
-          nix flake update &&
-          sudo nixos-rebuild switch --flake "$HOME/tooling#nixos" &&
-          git status --short
-        )
-      }
-
-      cleanup() {
-        sudo nix-collect-garbage -d
-        nix-collect-garbage -d
-      }
-
-      ntemp() {
-        if [ "$#" -eq 0 ]; then
-          echo "usage: ntemp <package> [package ...]" >&2
-          return 2
-        fi
-
-        local args=()
-        local package
-        for package in "$@"; do
-          args+=("nixpkgs#$package")
-        done
-        nix shell "''${args[@]}"
-      }
-    '';
-  };
+    source "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+  '';
 }
