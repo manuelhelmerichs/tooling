@@ -33,6 +33,7 @@ This machine is an Apple Silicon macOS workstation, with
 - `~/Projects/tooling#manuel` is the single source of truth for Home Manager configuration.
 - Put permanent CLI and user tools in `modules/home`.
 - Do not declare GUI apps or macOS system defaults here; those are managed outside this repository.
+- Keep login-shell files such as `~/.zprofile` and `~/.zshenv` unmanaged; only `~/.zshrc` should be used for repo-managed interactive shell helpers.
 - Keep secrets and mutable state out of the repo, including auth tokens, shell history, caches, and databases!
 - Always format Nix with `nixpkgs-fmt`.
 - Validate flake changes with `nix flake check` when feasible, or evaluate `.#homeConfigurations.manuel.activationPackage`.

@@ -40,3 +40,5 @@ ntemp jq      # temporary nix shell with nixpkgs#jq
 ```
 
 Declare CLI and development tools in `modules/home`. GUI apps are managed manually outside this repository.
+
+This repository intentionally manages only `~/.zshrc` for interactive shell helpers. Login-shell files such as `~/.zprofile` and `~/.zshenv` stay unmanaged so machine-local PATH setup can live there without fighting Home Manager.
