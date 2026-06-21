@@ -2,6 +2,10 @@
   programs.git = {
     enable = true;
     settings = {
+      user = {
+        name = "manuelhelmerichs";
+        email = "manuelhelmerichs@icloud.com";
+      };
       init.defaultBranch = "main";
       pull.ff = "only";
       push = {
