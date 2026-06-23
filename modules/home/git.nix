@@ -3,6 +3,7 @@
     enable = true;
     ignores = [
       ".DS_Store"
+      ".claude/"
     ];
     settings = {
       user = {
