@@ -2,9 +2,8 @@
 
 {
   imports = [
-    ./claude.nix
+    ./agents.nix
     ./cli.nix
-    ./codex.nix
     ./git.nix
     ./shell.nix
     ./vim.nix

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Zettelkasten"
+  short_description: "Create agent zettel in the right folder"
+  default_prompt: "Use $zettelkasten to create a zettel from this conversation."

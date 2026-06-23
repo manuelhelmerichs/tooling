@@ -1,6 +1,6 @@
 ---
 name: tooling
-description: "Use when setting up projects, installing project dependencies, temporary tools, or managing this machine."
+description: "Use when setting up projects or new agent skills, installing project dependencies or temporary tools, or managing this machine."
 ---
 
 # Tooling
@@ -32,6 +32,7 @@ This machine is an Apple Silicon macOS workstation, with
 
 - `~/Projects/tooling#manuel` is the single source of truth for Home Manager configuration.
 - Put permanent CLI and user tools in `modules/home`.
+- Agent skills are managed in `skills`, and linked via `modules/home/agents.nix`. All skills should follow that pattern.
 - Do not declare GUI apps or macOS system defaults here; those are managed outside this repository.
 - Keep login-shell files such as `~/.zprofile` and `~/.zshenv` unmanaged; only `~/.zshrc` should be used for repo-managed interactive shell helpers.
 - Keep secrets and mutable state out of the repo, including auth tokens, shell history, caches, and databases!
