@@ -3,8 +3,9 @@
 {
   imports = [
     ./agents.nix
-    ./cli.nix
+    ./direnv.nix
     ./git.nix
+    ./packages.nix
     ./shell.nix
     ./vim.nix
   ];

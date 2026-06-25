@@ -34,7 +34,7 @@
           inherit inputs username;
         };
         modules = [
-          ./modules/home
+          ./home
         ];
       };
 

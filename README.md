@@ -1,23 +1,15 @@
-# Tooling
-
-Home Manager configuration for an Apple Silicon MacBook Air.
+Home Manager configuration for an Apple Silicon MacBook.
 
 ## Layout
 
-- `flake.nix` defines the `manuel` Home Manager configuration.
-- `modules/home` contains user-level packages and dotfiles.
-- `skills/tooling` is linked into agent skill directories so agents follow this machine's tooling rules.
+- `flake.nix` defines the Home Manager configuration.
+- `home` contains user-level packages, `dotfiles` the corresponding customizations.
+- `skills` are linked into agent skill directories.
 - `AGENTS.md` gives repository-local instructions.
 
-## Fresh Mac Setup
+## First switch
 
-Create the macOS account with short name `manuel`, install Determinate Nix, then run the bootstrap command.
-
-```zsh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-```
-
-Open a new terminal, then:
+Assumes a macOS account with short name `manuel`. Install Determinate Nix, then run:
 
 ```zsh
 mkdir -p "$HOME/Projects" &&
@@ -27,7 +19,7 @@ mkdir -p "$HOME/Projects" &&
     switch --flake "$HOME/Projects/tooling#manuel"
 ```
 
-## Custom Helpers
+## Custom helpers
 
 After the first switch, zsh provides:
 
@@ -39,6 +31,4 @@ cleanup       # collect old Nix generations
 ntemp jq      # temporary nix shell with nixpkgs#jq
 ```
 
-Declare CLI and development tools in `modules/home`. GUI apps are managed manually outside this repository.
-
-This repository intentionally manages only `~/.zshrc` for interactive shell helpers. Login-shell files such as `~/.zprofile` and `~/.zshenv` stay unmanaged so machine-local PATH setup can live there without fighting Home Manager.
+GUI apps are managed manually outside this repository.

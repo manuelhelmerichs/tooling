@@ -24,16 +24,16 @@ This machine is an Apple Silicon macOS workstation, with
 
 ## Temporary tools
 
-- Use `ntemp <package> [package ...]` for an interactive temporary shell (available after this system has been switched).
-- For one command, or before `ntemp` is available, use `nix shell nixpkgs#<package> --command <cmd>`.
+- Use `ntemp <package> [package ...]` for an interactive temporary shell.
+- For one command, use `nix shell nixpkgs#<package> --command <cmd>`.
 - Examples: `ntemp jq ripgrep`, `nix shell nixpkgs#jq --command jq --version`.
 - In the (hopefully rare) case that nix cannot provide a suitable tool, make sure to leave a receipt (covering exactly what you installed and whereto) on disk (in the project directory or, if not working on a specific project, on the `~/Desktop`).
 
 ## Machine management
 
 - `~/Projects/tooling#manuel` is the single source of truth for the Home Manager configuration.
-- Put permanent CLI and user tools in `modules/home`.
-- Agent skills are managed in `skills`, and linked via `modules/home/agents.nix`. All skills should follow that pattern.
+- Put permanent CLI and user tools in `home`.
+- Agent skills are managed in `skills`, and linked via `home/agents.nix`. All skills should follow that pattern.
 - Do not declare GUI apps or macOS system defaults here; those are managed outside this repository.
 - Keep login-shell files such as `~/.zprofile` and `~/.zshenv` unmanaged; only `~/.zshrc` should be used for repo-managed interactive shell helpers.
 - Keep secrets and mutable state out of the repo, including auth tokens, shell history, caches, and databases!
