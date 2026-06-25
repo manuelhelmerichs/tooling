@@ -17,7 +17,7 @@ This machine is an Apple Silicon macOS workstation, with
 
 ## Project setup
 
-- For new projects, always prefer a repo-local dev environment (probably `flake.nix`; maybe `shell.nix`, or the project's existing Nix pattern) over global installs.
+- For new projects, always prefer a repo-local dev environment (probably `flake.nix` or an `uv` Python environment) over global installs. Set up a succinct `AGENTS.md` right away and create a `CLAUDE.md` with just the content `@AGENTS.md`.
 - If adding a flake, include the language toolchain and native libraries in `devShells.${system}.default`; use `.envrc` with `use flake` if direnv makes sense.
 - For existing projects, follow the repo's lockfiles and package manager. Install language dependencies with the project tool (`npm ci`, `uv sync`, etc.) inside the project environment.
 - If a missing binary is only needed once, use a temporary Nix shell (see below!) instead.
@@ -27,10 +27,11 @@ This machine is an Apple Silicon macOS workstation, with
 - Use `ntemp <package> [package ...]` for an interactive temporary shell (available after this system has been switched).
 - For one command, or before `ntemp` is available, use `nix shell nixpkgs#<package> --command <cmd>`.
 - Examples: `ntemp jq ripgrep`, `nix shell nixpkgs#jq --command jq --version`.
+- In the (hopefully rare) case that nix cannot provide a suitable tool, make sure to leave a receipt (covering exactly what you installed and whereto) on disk (in the project directory or, if not working on a specific project, on the `~/Desktop`).
 
 ## Machine management
 
-- `~/Projects/tooling#manuel` is the single source of truth for Home Manager configuration.
+- `~/Projects/tooling#manuel` is the single source of truth for the Home Manager configuration.
 - Put permanent CLI and user tools in `modules/home`.
 - Agent skills are managed in `skills`, and linked via `modules/home/agents.nix`. All skills should follow that pattern.
 - Do not declare GUI apps or macOS system defaults here; those are managed outside this repository.

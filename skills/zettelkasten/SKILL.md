@@ -1,11 +1,11 @@
 ---
 name: zettelkasten
-description: "Use when creating, updating, or researching zettel in the user's zettelkasten, especially when asked to create a zettel from a conversation, question, agent work, topic, paper, or notes. TODO: Provides the allowed write location, paper lookup rules, and read-only handling for Zotero-managed metadata."
+description: "Use when creating, updating, or researching zettel in the user's zettelkasten, especially when asked to create a zettel from a conversation, question, agent work, topic, paper, or notes."
 ---
 
 # Zettelkasten
 
-An Obsidian vault of atomic, densely interlinked notes on machine-learning research. Notes are short and concept-first, connected with Obsidian `[[wikilinks]]` and arranged spatially on `.canvas` maps. Math is LaTeX, with function arguments in square brackets, e.g. `p[\theta|x]`, `N[0,I]`.
+An Obsidian vault of atomic, densely interlinked notes on machine learning research. Notes are short and concept-first, connected with Obsidian `[[wikilinks]]` and arranged spatially on (JSON) `.canvas` maps. Math is LaTeX, with function arguments in square brackets, e.g. `p[\theta|x]`, `N[0,I]`.
 
 ## Locations
 
