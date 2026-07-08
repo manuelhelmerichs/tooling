@@ -6,6 +6,7 @@ let
   # Skills shared across agent runtimes. Each entry is linked into every
   # agent's skills directory below.
   skills = [
+    "mineru"
     "tooling"
     "zettelkasten"
   ];
