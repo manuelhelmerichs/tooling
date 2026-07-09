@@ -1,4 +1,0 @@
-interface:
-  display_name: "MinerU"
-  short_description: "Parse documents into Markdown/JSON"
-  default_prompt: "Use $mineru to parse this document into Markdown and structured JSON."

@@ -5,7 +5,6 @@
     ./agents.nix
     ./direnv.nix
     ./git.nix
-    ./mineru.nix
     ./packages.nix
     ./shell.nix
     ./vim.nix
