@@ -1,0 +1,4 @@
+interface:
+  display_name: "Library"
+  short_description: "Resolve BibTeX keys to local paper PDFs"
+  default_prompt: "Use $library to locate and read the paper for this BibTeX key."
