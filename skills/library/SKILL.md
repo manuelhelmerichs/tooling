@@ -1,6 +1,6 @@
 ---
 name: library
-description: "Resolve local research papers from BibTeX citekeys. Use whenever a BibTeX key appears in a request, note, filename, citation, or research workflow and the corresponding paper PDF may be needed."
+description: "Resolve local research papers from BibTeX citekeys. Use whenever a BibTeX key appears in a request, note, filename or citation and the corresponding PDF is needed."
 ---
 
 # Library

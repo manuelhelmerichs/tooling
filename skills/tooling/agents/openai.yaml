@@ -1,4 +1,4 @@
 interface:
   display_name: "Tooling"
-  short_description: "macOS project and machine tooling"
-  default_prompt: "Use $tooling when setting up projects, installing dependencies, temporary tools, or changing this macOS machine."
+  short_description: "Project and machine tooling"
+  default_prompt: "Use $tooling when setting up projects, installing dependencies or temporary tools."

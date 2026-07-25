@@ -22,6 +22,7 @@
     shellcheck
     shfmt
     statix
+    texliveFull
     tree
     unzip
     uv
