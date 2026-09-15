@@ -1,0 +1,4 @@
+interface:
+  display_name: "Notation"
+  short_description: "Notation conventions"
+  default_prompt: "Use $notation to apply my mathematical notation conventions."

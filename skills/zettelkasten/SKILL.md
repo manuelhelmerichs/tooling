@@ -19,7 +19,7 @@ An Obsidian vault of atomic, densely interlinked notes ('zettel') on machine lea
 - The only folder you may write to, create, rename, or delete files in.
 - Put every note you generate here - drafts from a conversation, summaries of your work, or proposed concept/paper/topic zettel.
 - These are called actions because each zettel corresponds to one (or more) actions I need to take - mostly reviewing and understanding, but it can be anything!
-- Use the same conventions as the rest of the vault (terse, atomic, LaTeX math, `[[wikilinks]]`).
+- Use the same conventions as the rest of the vault (terse, atomic, LaTeX math, links to `[[Other zettel]]`). (Obsidian resolves by title, so no path is needed).
 - Don't refile notes into `Concepts`/`Papers` yourself; leave that to me.
 
 ### Canvases
@@ -51,10 +51,3 @@ I use the following action tags across all zettel and canvases:
 ```
 
 I also use tags for projects, structured like `#project/name-of-the-project`.
-
-## Creating zettel
-
-- Write the new note as a single `.md` file in `Actions`. The filename should be the zettel title for concept or topic notes, the BibTeX citekey for a paper, or just some action I need to take (e.g., "Proof that ...").
-- Keep it atomic and terse: one idea per note, bullets over prose, LaTeX for math (square-bracket function args, e.g. `p[\theta|x]`, `N[0,I]`).
-- Reference existing notes with `[[Note title]]` (Obsidian resolves by title, so no path is needed). Scan existing titles in `Concepts` and `Papers` first so links resolve and you don't duplicate a note.
-- If a close note already exists, prefer extending it over creating a new one - but still write your version inside `Actions` and note the intended target.
