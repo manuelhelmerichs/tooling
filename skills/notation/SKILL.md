@@ -1,21 +1,20 @@
 ---
 name: notation
-description: "Use the appropriate mathematical notation when writing or editing technical material concerning Bayesian deep learning."
+description: "Use when asked to review or edit the mathematical notation in technical material."
 ---
 
 # Notation
 
-Apply these conventions consistently unless the user or project explicitly
-specifies a different convention.
+If there are no reasons for exceptions, the following notation and abbreviations should be used consistently.
 
 ## Mathematical notation
 
-- Use $\theta \in \Theta$ for parameter vectors.
+- Use $\theta \in \Theta$ for parameter vectors (typically $\theta \in \mathbb{R}^D$).
 - Use $p[x \mid \theta]$ for the true likelihood and $q[x \mid \theta]$ for
-  variational approximations.
+  (variational) approximations.
 - Write row derivatives as
-  $\frac{\partial}{\partial \theta} f \in \mathbb{R}^{1 \times d}$ and gradients
-  as $\nabla f \in \mathbb{R}^d$.
+  $\frac{\partial}{\partial \theta} f \in \mathbb{R}^{1 \times D}$ and gradients
+  as $\nabla f \in \mathbb{R}^D$.
 - Reserve $df[x,y] = \frac{\partial f}{\partial x}dx +
   \frac{\partial f}{\partial y}dy$ for total derivatives.
 - Write integrals as

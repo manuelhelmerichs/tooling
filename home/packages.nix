@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     bat
     bottom
-    claude-code
     codex
     deadnix
     fd
