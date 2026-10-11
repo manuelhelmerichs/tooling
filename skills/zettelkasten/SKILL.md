@@ -43,11 +43,11 @@ An Obsidian vault of atomic, densely interlinked notes ('zettel') on machine lea
 I use the following action tags across all zettel and canvases:
 
 ```txt
-#open/todo
-#open/to-show
-#open/question
-#open/further-reading
-#open/flashcard
+#open/todo            # denotes some general task
+#open/to-show         # I want to prove some relationship myself,
+#open/question        # have an open question,
+#open/further-reading # want or need to read a source,
+#open/flashcard       # or create an Anki flashcard.
 ```
 
 I also use tags for projects, structured like `#project/name-of-the-project`.

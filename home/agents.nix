@@ -7,7 +7,6 @@ let
   # agent's skills directory below.
   skills = [
     "library"
-    "notation"
     "tooling"
     "zettelkasten"
   ];
